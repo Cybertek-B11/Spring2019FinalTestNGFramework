@@ -18,11 +18,12 @@ public class VYTrackUtils {
 
     /**
      * Login into vytrack application
+     *
      * @param driver
      * @param username
      * @param password
      */
-    public static void login(WebDriver driver, String username, String password){
+    public static void login(WebDriver driver, String username, String password) {
         driver.findElement(By.id(usernamelocator)).sendKeys(username);
         //Keys.ENTER means click enter after entering password
         //in this way, we don't need to click login button
@@ -39,9 +40,9 @@ public class VYTrackUtils {
      * @param tab
      * @param module
      */
-    public static void navigateToModule(WebDriver driver, String tab, String module){
-        String tabLocator = "//span[contains(text(),'"+tab+"') and contains(@class, 'title title-level-1')]";
-        String moduleLocator = "//span[contains(text(),'"+module+"') and contains(@class, 'title title-level-2')]";
+    public static void navigateToModule(WebDriver driver, String tab, String module) {
+        String tabLocator = "//span[contains(text(),'" + tab + "') and contains(@class, 'title title-level-1')]";
+        String moduleLocator = "//span[contains(text(),'" + module + "') and contains(@class, 'title title-level-2')]";
         BrowserUtils.clickWithWait(driver, By.xpath(tabLocator), 5);
         driver.findElement(By.xpath(moduleLocator)).click();
     }
@@ -51,37 +52,43 @@ public class VYTrackUtils {
      * For example: if tab is equals to Activities, and module equals to Calls,
      * Then method will navigate user to this page: http://qa2.vytrack.com/call/
      *
-     *
      * @param tab
      * @param module
      */
-    public static void navigateToModule(String tab, String module){
-        String tabLocator = "//span[normalize-space()='"+tab+"' and contains(@class, 'title title-level-1')]";
-        String moduleLocator = "//span[normalize-space()='"+module+"' and contains(@class, 'title title-level-2')]";
-       try{
-           BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
-           WebElement tabElement = Driver.getDriver().findElement(By.xpath(tabLocator));
-           new Actions(Driver.getDriver()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
-       }catch (Exception e){
-           BrowserUtils.clickWithWait(By.xpath(tabLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-       }
-        BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-        BrowserUtils.waitForVisibility(By.xpath(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
-        Driver.getDriver().findElement(By.xpath(moduleLocator)).click();
+    public static void navigateToModule(String tab, String module) {
+        String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
+        String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
+        try {
+            BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
+            WebElement tabElement = Driver.getDriver().findElement(By.xpath(tabLocator));
+            new Actions(Driver.getDriver()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
+        } catch (Exception e) {
+            BrowserUtils.clickWithWait(By.xpath(tabLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+        }
+        try {
+            BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            BrowserUtils.waitForVisibility(By.xpath(moduleLocator), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+            BrowserUtils.scrollToElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
+            Driver.getDriver().findElement(By.xpath(moduleLocator)).click();
+        } catch (Exception e) {
+            BrowserUtils.scrollToElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
+            Driver.getDriver().findElement(By.xpath(moduleLocator)).click();
+        }
     }
 
     /**
      * Waits until loader screen present. If loader screen will not pop up at all,
      * NoSuchElementException will be handled  bu try/catch block
      * Thus, we can continue in any case.
+     *
      * @param driver
      */
     public static void waitUntilLoaderScreenDisappear(WebDriver driver) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Long.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
             wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(loaderMaskLocator))));
-        }catch (Exception e){
-            System.out.println(e+" :: Loader mask doesn't present.");
+        } catch (Exception e) {
+            System.out.println(e + " :: Loader mask doesn't present.");
         }
     }
 
@@ -89,22 +96,20 @@ public class VYTrackUtils {
      * Waits until loader screen present. If loader screen will not pop up at all,
      * NoSuchElementException will be handled  bu try/catch block
      * Thus, we can continue in any case.
-     *
      */
     public static void waitUntilLoaderScreenDisappear() {
         try {
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
             wait.until(ExpectedConditions.invisibilityOf(Driver.getDriver().findElement(By.cssSelector(loaderMaskLocator))));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Loader mask doesn't present.");
         }
     }
 
     /**
-     *
      * @return page name, for example: Dashboard
      */
-    public static String getPageSubTitle(){
+    public static String getPageSubTitle() {
         //ant time we are verifying page name, or page subtitle, loader mask appears
         waitUntilLoaderScreenDisappear(Driver.getDriver());
         return Driver.getDriver().findElement(By.cssSelector(pageSubTitleLocator)).getText();

@@ -23,10 +23,9 @@ public class TestBase {
     protected WebDriver driver;
     protected Actions action;
 
-    protected ExtentReports report;
-    protected ExtentHtmlReporter htmlReporter;
-    protected ExtentTest extentLogger;
-
+    protected static ExtentReports report;
+    protected static ExtentHtmlReporter htmlReporter;
+    protected static ExtentTest extentLogger;
 
 
     @BeforeTest(alwaysRun = true)
@@ -39,7 +38,7 @@ public class TestBase {
         // test-output --> folder in the current project, will be created by testng if
         // it does not already exist
         // report.html --> name of the report file
-        String filePath = System.getProperty("user.dir") + "/test-output/"+test+"/"+ LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) +"/report.html";
+        String filePath = System.getProperty("user.dir") + "/test-output/" + test == null ? "" : test + "/" + LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) + "/report.html";
         htmlReporter = new ExtentHtmlReporter(filePath);
 
         report.attachReporter(htmlReporter);
@@ -49,15 +48,15 @@ public class TestBase {
         report.setSystemInfo("OS", System.getProperty("os.name"));
         htmlReporter.config().setDocumentTitle("VYTrack Test automation");
         htmlReporter.config().setReportName("VYTrack Test automation");
-        if(System.getenv("runner")!=null){
-            extentLogger.info("Running: "+System.getenv("runner"));
+        if (System.getenv("runner") != null) {
+            extentLogger.info("Running: " + System.getenv("runner"));
         }
     }
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
-    public void setup(@Optional String browser){
+    public void setup(@Optional String browser) {
         driver = Driver.getDriver(browser);
         action = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(Long.valueOf(ConfigurationReader.getProperty("implicitwait")), TimeUnit.SECONDS);
@@ -65,8 +64,8 @@ public class TestBase {
         driver.get(ConfigurationReader.getProperty("url"));
     }
 
-    @AfterMethod
-    public void teardown(ITestResult result){
+    @AfterMethod(alwaysRun = true)
+    public void teardown(ITestResult result) {
         // checking if the test method failed
         if (result.getStatus() == ITestResult.FAILURE) {
             // get screenshot using the utility method and save the location of the screenshot
@@ -84,9 +83,9 @@ public class TestBase {
             // capture the exception thrown
             extentLogger.fail(result.getThrowable());
 
-        } else if(result.getStatus() == ITestResult.SUCCESS) {
-            extentLogger.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" PASSED ", ExtentColor.GREEN));
-        }else if (result.getStatus() == ITestResult.SKIP) {
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            extentLogger.log(Status.PASS, MarkupHelper.createLabel(result.getName() + " PASSED ", ExtentColor.GREEN));
+        } else if (result.getStatus() == ITestResult.SKIP) {
             extentLogger.skip("Test Case Skipped is " + result.getName());
         }
         Driver.closeDriver();

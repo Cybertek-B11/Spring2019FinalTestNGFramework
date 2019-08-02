@@ -17,7 +17,7 @@ public class Driver {
     private Driver() {
     }
 
-    public static WebDriver getDriver(String browser) {
+    public synchronized static WebDriver getDriver(String browser) {
 
 
         // String browser ==>  it originally comes from xml file to test base class, from test base it comes here
