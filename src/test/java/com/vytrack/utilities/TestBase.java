@@ -38,7 +38,10 @@ public class TestBase {
         // test-output --> folder in the current project, will be created by testng if
         // it does not already exist
         // report.html --> name of the report file
-        String filePath = System.getProperty("user.dir") + "/test-output/" + test == null ? "" : test + "/" + LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) + "/report.html";
+        if(test == null){
+            test = "reports";
+        }
+        String filePath = System.getProperty("user.dir") + "/test-output/" + test+ "/" + LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) + "/report.html";
         htmlReporter = new ExtentHtmlReporter(filePath);
 
         report.attachReporter(htmlReporter);
