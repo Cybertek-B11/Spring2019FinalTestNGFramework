@@ -77,7 +77,7 @@ public class LoginTests extends TestBase {
         extentLogger = report.createTest("Negative login test");
         extentLogger.info("Login with wrongusername username and wrongpassword password");
         pages.loginPage().login("wrongusername", "wrongpassword");
-        softAssert.assertEquals(pages.loginPage().getErrorMessage(), "Invalid user name or");
+        softAssert.assertEquals(pages.loginPage().getErrorMessage(), "Invalid user name or password.");
         extentLogger.pass("Verified that Message present: " + pages.loginPage().getErrorMessage());
     }
 
