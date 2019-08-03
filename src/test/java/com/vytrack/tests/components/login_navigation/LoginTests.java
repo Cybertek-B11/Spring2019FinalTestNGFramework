@@ -4,6 +4,8 @@ import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
@@ -32,6 +34,44 @@ public class LoginTests extends TestBase {
         Assert.assertEquals(pages.loginPage().getErrorMessage(), "Invalid user name or password.");
         extentLogger.pass("Verified that Message present: " + pages.loginPage().getErrorMessage());
     }
+
+
+    @Test
+    @Parameters({ "username", "password" }) // get data from data testng.xml
+    public void loginWithParameters(String username, String password) {
+        extentLogger = report.createTest("Login as store manager");
+
+        //we are instantiating page class inside a tests class,
+        //because for second test, if we run all tests in a row, driver will have null session
+        pages.loginPage().clickRememberMe();
+        pages.loginPage().login(username, password);
+        //to verify that Dashboard page opened
+        //Once page name Dashboard displays, means that we are logged successfully
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Dashboard");
+        extentLogger.pass("Verified page name: " + pages.loginPage().getPageSubTitle());
+    }
+
+    @Test(dataProvider = "credentials_info") // get data from data provider
+    public void loginWithDataProvider(String username, String password) {
+        extentLogger = report.createTest("Login as store manager");
+        System.out.println(username+"  ::  "+password);
+        //we are instantiating page class inside a tests class,
+        //because for second test, if we run all tests in a row, driver will have null session
+        pages.loginPage().clickRememberMe();
+        pages.loginPage().login(username, password);
+        //to verify that Dashboard page opened
+        //Once page name Dashboard displays, means that we are logged successfully
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Dashboard");
+        extentLogger.pass("Verified page name: " + pages.loginPage().getPageSubTitle());
+    }
+
+    @DataProvider(name = "credentials_info")
+    public static Object[][] credentials() {
+        return new Object[][] { { "storemanager85", "UserUser123" },
+                                { "salesmanager110", "UserUser123" }};
+
+    }
+
 
 
 }

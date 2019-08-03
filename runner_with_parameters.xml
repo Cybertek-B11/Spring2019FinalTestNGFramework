@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Smoke test" verbose="1">
+    <test name="Login test with parameters">
+        <parameter name="username" value="salesmanager110"/>
+        <parameter name="password" value="UserUser123"/>
+        <classes>
+            <class name="com.vytrack.tests.components.login_navigation.LoginTests">
+                <methods>
+                    <include name="loginWithParameters"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
