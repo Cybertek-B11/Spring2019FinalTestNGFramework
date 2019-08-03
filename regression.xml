@@ -4,7 +4,11 @@
         <parameter name="test" value="regression"></parameter>
         <classes>
             <class name="com.vytrack.tests.components.activities.CalendarEventsTests"/>
-            <class name="com.vytrack.tests.components.login_navigation.LoginTests"/>
+            <class name="com.vytrack.tests.components.login_navigation.LoginTests">
+                <methods>
+                    <exclude name="loginWithParameters"></exclude>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

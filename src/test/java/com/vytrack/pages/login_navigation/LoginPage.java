@@ -1,6 +1,5 @@
 package com.vytrack.pages.login_navigation;
 
-import com.vytrack.utilities.BasePage;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
@@ -8,10 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends BasePage {
+public class LoginPage {
+    public LoginPage(){PageFactory.initElements(Driver.getDriver(), this);}
 
     @FindBy(id = "prependedInput")
     @CacheLookup

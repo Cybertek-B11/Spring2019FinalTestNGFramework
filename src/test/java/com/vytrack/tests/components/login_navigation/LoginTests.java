@@ -1,6 +1,5 @@
 package com.vytrack.tests.components.login_navigation;
 
-import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.TestBase;
 import org.testng.Assert;
@@ -22,8 +21,8 @@ public class LoginTests extends TestBase {
         pages.loginPage().login(username, password);
         //to verify that Dashboard page opened
         //Once page name Dashboard displays, means that we are logged successfully
-        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Dashboard");
-        extentLogger.pass("Verified page name: " + pages.loginPage().getPageSubTitle());
+        Assert.assertEquals(pages.dashboardPage().getPageSubTitle(), "Dashboard");
+        extentLogger.pass("Verified page name: " + pages.dashboardPage().getPageSubTitle());
     }
 
     @Test(description = "Login with invalid credentials and verify warning message")
@@ -47,8 +46,8 @@ public class LoginTests extends TestBase {
         pages.loginPage().login(username, password);
         //to verify that Dashboard page opened
         //Once page name Dashboard displays, means that we are logged successfully
-        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Dashboard");
-        extentLogger.pass("Verified page name: " + pages.loginPage().getPageSubTitle());
+        Assert.assertEquals(pages.dashboardPage().getPageSubTitle(), "Dashboard");
+        extentLogger.pass("Verified page name: " + pages.dashboardPage().getPageSubTitle());
     }
 
     @Test(dataProvider = "credentials_info") // get data from data provider
@@ -61,8 +60,8 @@ public class LoginTests extends TestBase {
         pages.loginPage().login(username, password);
         //to verify that Dashboard page opened
         //Once page name Dashboard displays, means that we are logged successfully
-        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Dashboard");
-        extentLogger.pass("Verified page name: " + pages.loginPage().getPageSubTitle());
+        Assert.assertEquals(pages.dashboardPage().getPageSubTitle(), "Dashboard");
+        extentLogger.pass("Verified page name: " + pages.dashboardPage().getPageSubTitle());
     }
 
     @DataProvider(name = "credentials_info")

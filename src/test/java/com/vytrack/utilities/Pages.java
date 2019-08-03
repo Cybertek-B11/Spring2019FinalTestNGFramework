@@ -1,4 +1,4 @@
-package com.vytrack.pages;
+package com.vytrack.utilities;
 
 import com.vytrack.pages.activites.CalendarEventsPage;
 import com.vytrack.pages.dashboards.DashboardPage;

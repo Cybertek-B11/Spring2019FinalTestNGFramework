@@ -1,6 +1,7 @@
 package com.vytrack.tests.components.activities;
-import com.vytrack.utilities.ConfigurationReader;
+
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ public class CalendarEventsTests extends TestBase {
 
         //go to Calendar Events page
 
-        pages.loginPage().navigateToModule("Activities", "Calendar Events");
+        pages.dashboardPage().navigateToModule("Activities", "Calendar Events");
 
         //deselect title option from grid settings
         pages.calendarEventsPage().selectGridSetting("Title", false);
@@ -49,7 +50,7 @@ public class CalendarEventsTests extends TestBase {
         pages.loginPage().login(username, password);
 
         //go to Calendar Events page
-        pages.loginPage().navigateToModule("Activities", "Calendar Events");
+        pages.dashboardPage().navigateToModule("Activities", "Calendar Events");
 
         pages.calendarEventsPage().clickOnCreateCalendarEvent();
         extentLogger.info("Click on create calendar event button.");
@@ -73,7 +74,7 @@ public class CalendarEventsTests extends TestBase {
         pages.loginPage().login(username, password);
 
         //go to Calendar Events page
-        pages.loginPage().navigateToModule("Activities", "Calendar Events");
+        pages.dashboardPage().navigateToModule("Activities", "Calendar Events");
 
         //click to create calendar event
         pages.calendarEventsPage().clickOnCreateCalendarEvent();
@@ -105,7 +106,7 @@ public class CalendarEventsTests extends TestBase {
         pages.loginPage().login(username, password);
 
         //go to Calendar Events page
-        pages.loginPage().navigateToModule("Activities", "Calendar Events");
+        pages.dashboardPage().navigateToModule("Activities", "Calendar Events");
 
         //click to create calendar event
         pages.calendarEventsPage().clickOnCreateCalendarEvent();
@@ -131,7 +132,7 @@ public class CalendarEventsTests extends TestBase {
         pages.loginPage().login(username, password);
 
         //go to Calendar Events page
-        pages.loginPage().navigateToModule("Activities", "Calendar Events");
+        pages.dashboardPage().navigateToModule("Activities", "Calendar Events");
 
         //click to create calendar event
         pages.calendarEventsPage().clickOnCreateCalendarEvent();
