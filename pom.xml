@@ -30,8 +30,8 @@
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                     <useFile>false</useFile>
                     <suiteXmlFiles>
-                        <suiteXmlFile>runner.xml</suiteXmlFile>
-                        <suiteXmlFile>smoketest.xml</suiteXmlFile>
+                        <suiteXmlFile>testngrunner.xml</suiteXmlFile>
+                        <suiteXmlFile>testngrunner2.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -53,11 +53,9 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.7.0</version>
                         <configuration>
-                            <!-- specify current java version here: -->
-                            <source>9</source>
-                            <target>9</target> <!-- or edit these in your properties -->
+                            <source>8</source>
+                            <target>8</target>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -112,6 +110,21 @@
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>4.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
         </dependency>
     </dependencies>
 </project>

@@ -2,7 +2,6 @@ package com.vytrack.tests.smoketest;
 import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.TestBase;
-import com.vytrack.utilities.VYTrackUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,48 +10,45 @@ public class SmokeTest extends TestBase {
     @Test
     public void verifyDashboards(){
         extentLogger = report.createTest("Verify Dashboards module");
-        LoginPage loginPage = new LoginPage();
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
-        loginPage.login(username, password);
+        pages.loginPage().login(username, password);
 
-        VYTrackUtils.navigateToModule("Dashboards", "Dashboard");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "Dashboard");
+        pages.loginPage().navigateToModule("Dashboards", "Dashboard");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Dashboard");
 
-        VYTrackUtils.navigateToModule("Dashboards", "Manage Dashboards");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Manage Dashboards");
+        pages.loginPage().navigateToModule("Dashboards", "Manage Dashboards");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Manage Dashboards");
     }
 
     @Test
     public void verifyFleet(){
         extentLogger = report.createTest("Verify Fleet module");
-        LoginPage loginPage = new LoginPage();
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
-        loginPage.login(username, password);
+        pages.loginPage().login(username, password);
 
-        VYTrackUtils.navigateToModule("Fleet", "Vehicles");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Cars");
+        pages.loginPage().navigateToModule("Fleet", "Vehicles");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Cars");
 
 
-        VYTrackUtils.navigateToModule("Fleet", "Vehicle Costs");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Vehicle Costs");
+        pages.loginPage().navigateToModule("Fleet", "Vehicle Costs");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Vehicle Costs");
 
-        VYTrackUtils.navigateToModule("Fleet", "Vehicle Contracts");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Vehicle Contract");
+        pages.loginPage().navigateToModule("Fleet", "Vehicle Contracts");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Vehicle Contract");
 
     }
 
     @Test
     public void verifySales(){
         extentLogger = report.createTest("Verify Sales module");
-        LoginPage loginPage = new LoginPage();
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
-        loginPage.login(username, password);
+        pages.loginPage().login(username, password);
 
-        VYTrackUtils.navigateToModule("Sales", "Opportunities");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "Open Opportunities");
+        pages.loginPage().navigateToModule("Sales", "Opportunities");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "Open Opportunities");
 
 
     }
@@ -60,28 +56,25 @@ public class SmokeTest extends TestBase {
     @Test
     public void verifySystem(){
         extentLogger = report.createTest("Verify System module");
-        LoginPage loginPage = new LoginPage();
-        loginPage.login(); // login with default credentials
-        VYTrackUtils.navigateToModule("System", "Jobs");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Jobs List");
+        pages.loginPage().login(); // login with default credentials
+        pages.loginPage().navigateToModule("System", "Jobs");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Jobs List");
     }
 
     @Test
     public void verifyMarketing(){
         extentLogger = report.createTest("Verify Marketing module");
-        LoginPage loginPage = new LoginPage();
-        loginPage.login(); // login with default credentials
-        VYTrackUtils.navigateToModule("Marketing", "Campaigns");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Campaigns");
+        pages.loginPage().login(); // login with default credentials
+        pages.loginPage().navigateToModule("Marketing", "Campaigns");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Campaigns");
     }
 
     @Test
     public void verifyCustomers(){
         extentLogger = report.createTest("Verify Customers module");
-        LoginPage loginPage = new LoginPage();
-        loginPage.login(); // login with default credentials
-        VYTrackUtils.navigateToModule("Customers", "Accounts");
-        Assert.assertEquals(VYTrackUtils.getPageSubTitle(), "All Accounts");
+        pages.loginPage().login(); // login with default credentials
+        pages.loginPage().navigateToModule("Customers", "Accounts");
+        Assert.assertEquals(pages.loginPage().getPageSubTitle(), "All Accounts");
     }
 
 }

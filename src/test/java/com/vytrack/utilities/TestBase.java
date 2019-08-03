@@ -7,11 +7,13 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import com.vytrack.pages.Pages;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-
+import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,27 +23,27 @@ public class TestBase {
 
     //should be public/protected !!!!
     protected WebDriver driver;
-    protected Actions action;
-
+    protected Pages pages;
+    protected SoftAssert softAssert;
     protected static ExtentReports report;
     protected static ExtentHtmlReporter htmlReporter;
     protected static ExtentTest extentLogger;
+    private static final Logger logger = LogManager.getLogger();
 
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeSuite(alwaysRun = true)
     @Parameters("test")
     public void setUpTest(@Optional String test) {
         // actual reporter
-
         report = new ExtentReports();
         // System.getProperty("user.dir") ---> get the path to current project
         // test-output --> folder in the current project, will be created by testng if
         // it does not already exist
         // report.html --> name of the report file
-        if(test == null){
+        if (test == null) {
             test = "reports";
         }
-        String filePath = System.getProperty("user.dir") + "/test-output/" + test+ "/" + LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) + "/report.html";
+        String filePath = System.getProperty("user.dir") + "/test-output/" + test + "/" + LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) + "/report.html";
         htmlReporter = new ExtentHtmlReporter(filePath);
 
         report.attachReporter(htmlReporter);
@@ -61,7 +63,8 @@ public class TestBase {
     @Parameters("browser")
     public void setup(@Optional String browser) {
         driver = Driver.getDriver(browser);
-        action = new Actions(driver);
+        pages = new Pages();
+        softAssert = new SoftAssert();
         driver.manage().timeouts().implicitlyWait(Long.valueOf(ConfigurationReader.getProperty("implicitwait")), TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(ConfigurationReader.getProperty("url"));
@@ -91,12 +94,13 @@ public class TestBase {
         } else if (result.getStatus() == ITestResult.SKIP) {
             extentLogger.skip("Test Case Skipped is " + result.getName());
         }
+        softAssert.assertAll();
         Driver.closeDriver();
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     public void tearDownTest() {
-        System.out.println("FLUSH");
+        logger.info(":: FLUSHING REPORT ::");
         report.flush();
     }
 }

@@ -1,8 +1,8 @@
 package com.vytrack.pages.activites;
 
+import com.vytrack.utilities.BasePage;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.Driver;
-import com.vytrack.utilities.VYTrackUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class CalendarEventsPage {
+public class CalendarEventsPage extends BasePage {
     @FindBy(css = "[title='Create Calendar event']")
     public WebElement createCalendarEventBtn;
 
@@ -55,12 +55,9 @@ public class CalendarEventsPage {
     public WebElement repeatCheckbox;
 
 
-    public CalendarEventsPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
-
     public void selectGridSetting(String name, boolean yesOrNo) {
         //click on grid options
+        waitUntilLoaderScreenDisappear();
         gridSettingsElement.click();
         //create locator for grid option based on the name
         String locator = "//td//label[text()='" + name + "']/../following-sibling::td//input";
@@ -93,7 +90,7 @@ public class CalendarEventsPage {
      * @param startOrEnd which date to click on start or end
      */
     public void selectStartOrEndDate(String date, String startOrEnd) {
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         LocalDate ld = LocalDate.of(Integer.parseInt(date.substring(date.lastIndexOf("/") + 1)),
                 Integer.parseInt(date.substring(0, date.indexOf("/"))),
                 Integer.parseInt(date.substring(date.indexOf("/") + 1, date.lastIndexOf("/"))));
@@ -129,7 +126,7 @@ public class CalendarEventsPage {
     public void selectTomorrowDay() {
         int day = LocalDate.now().plusDays(1).getDayOfMonth();
         int month = LocalDate.now().plusDays(1).getMonth().getValue();
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         startDate.click();
         Select monthSelect = new Select(monthDropdown);
         monthSelect.selectByIndex(month - 1);
@@ -141,7 +138,7 @@ public class CalendarEventsPage {
     public void selectADay(int plusDays) {
         int day = LocalDate.now().plusDays(plusDays).getDayOfMonth();
         int month = LocalDate.now().plusDays(plusDays).getMonth().getValue();
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         startDate.click();
         Select monthSelect = new Select(monthDropdown);
         monthSelect.selectByIndex(month - 1);
@@ -167,7 +164,7 @@ public class CalendarEventsPage {
 
     public void selectStartTime(int plusHours) {
         String time = LocalDateTime.now().plusHours(plusHours).format(DateTimeFormatter.ofPattern("h:00 a"));
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         String startTimeToSelect = "(//li[text()='" + time + "'])[1]";
         startTime.click();
         new WebDriverWait(Driver.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(startTimeToSelect)));
@@ -175,7 +172,7 @@ public class CalendarEventsPage {
     }
 
     public void selectStartTime(String time) {
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         String startTimeToSelect = "(//li[text()='" + time + "'])[1]";
         startTime.click();
         new WebDriverWait(Driver.getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(startTimeToSelect)));
@@ -183,7 +180,7 @@ public class CalendarEventsPage {
     }
 
     public void selectEndTime(String time) {
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         String endTimeToSelect = "(//li[text()='" + time + "'])[2]";
         startTime.click();
         Driver.getDriver().findElement(By.xpath(endTimeToSelect)).click();
@@ -201,7 +198,7 @@ public class CalendarEventsPage {
     }
 
     public void clickOnCreateCalendarEvent() {
-        VYTrackUtils.waitUntilLoaderScreenDisappear();
+        waitUntilLoaderScreenDisappear();
         createCalendarEventBtn.click();
     }
 

@@ -1,4 +1,6 @@
 package com.vytrack.pages.dashboards;
 
-public class DashboardPage {
+import com.vytrack.utilities.BasePage;
+
+public class DashboardPage extends BasePage {
 }
