@@ -36,7 +36,7 @@
     </build>
     <profiles>
         <profile>
-            <id>Parametrized</id>
+            <id>Parameterized</id>
             <build>
                 <plugins>
                     <plugin>
