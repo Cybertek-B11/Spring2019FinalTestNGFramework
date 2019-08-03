@@ -5,9 +5,6 @@ import com.vytrack.pages.dashboards.DashboardPage;
 import com.vytrack.pages.dashboards.ManageDashboards;
 import com.vytrack.pages.login_navigation.LoginPage;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-
 public class Pages {
     private LoginPage loginPage;
     private CalendarEventsPage calendarEventsPage;

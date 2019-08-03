@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Smoke tests" verbose="2">
+
+    <test name="Smoke tests">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.vytrack.tests.smoketest.SmokeTest"></class>
+        </classes>
+    </test>
+
+
+</suite>

@@ -2,6 +2,7 @@ package com.vytrack.pages.activites;
 
 import com.vytrack.utilities.BasePage;
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -199,6 +200,8 @@ public class CalendarEventsPage extends BasePage {
 
     public void clickOnCreateCalendarEvent() {
         waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForStaleElement(createCalendarEventBtn);
+        BrowserUtils.waitForClickablility(createCalendarEventBtn, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         createCalendarEventBtn.click();
     }
 

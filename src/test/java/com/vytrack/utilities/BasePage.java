@@ -49,6 +49,7 @@ public abstract class BasePage {
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
             wait.until(ExpectedConditions.invisibilityOf(loaderMask));
         } catch (Exception e) {
+            logger.error("Loader mask doesn't present.");
             System.out.println("Loader mask doesn't present.");
         }
     }

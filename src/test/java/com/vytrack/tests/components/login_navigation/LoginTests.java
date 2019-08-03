@@ -73,5 +73,14 @@ public class LoginTests extends TestBase {
     }
 
 
+    @Test(description = "Login with invalid credentials and verify warning message")
+    public void negativeLoginTest2() {
+        extentLogger = report.createTest("Negative login test");
+        extentLogger.info("Login with wrongusername username and wrongpassword password");
+        pages.loginPage().login("wrongusername", "wrongpassword");
+        softAssert.assertEquals(pages.loginPage().getErrorMessage(), "Invalid user name or");
+        extentLogger.pass("Verified that Message present: " + pages.loginPage().getErrorMessage());
+    }
+
 
 }
