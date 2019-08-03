@@ -45,7 +45,7 @@ public class TestBase {
         }
         String filePath = System.getProperty("user.dir") + "/test-output/" + test + "/" + LocalDate.now().format(DateTimeFormatter.ofPattern("MM_dd_yyyy")) + "/report.html";
         htmlReporter = new ExtentHtmlReporter(filePath);
-
+        logger.info("Report path: "+filePath);
         report.attachReporter(htmlReporter);
         report.setSystemInfo("ENV", "qa");
         report.setSystemInfo("ENV", "qa");
@@ -67,11 +67,14 @@ public class TestBase {
         softAssert = new SoftAssert();
         driver.manage().timeouts().implicitlyWait(Long.valueOf(ConfigurationReader.getProperty("implicitwait")), TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get(ConfigurationReader.getProperty("url"));
+        String URL = ConfigurationReader.getProperty("url"+ConfigurationReader.getProperty("environment"));
+        driver.get(URL);
+        logger.info("URL: "+URL);
     }
 
     @AfterMethod(alwaysRun = true)
-    public void teardown(ITestResult result) {
+    @Parameters("browser")
+    public void teardown(@Optional String browser, ITestResult result) {
         // checking if the test method failed
         if (result.getStatus() == ITestResult.FAILURE) {
             // get screenshot using the utility method and save the location of the screenshot
@@ -94,6 +97,10 @@ public class TestBase {
         } else if (result.getStatus() == ITestResult.SKIP) {
             extentLogger.skip("Test Case Skipped is " + result.getName());
         }
+        if(browser == null){
+            browser = ConfigurationReader.getProperty("browser");
+        }
+        extentLogger.log(Status.INFO, MarkupHelper.createLabel("Browser: "+browser, ExtentColor.ORANGE));
         softAssert.assertAll();
         Driver.closeDriver();
     }

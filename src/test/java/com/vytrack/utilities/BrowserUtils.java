@@ -422,7 +422,7 @@ public class BrowserUtils {
         for (int i = 0; i < timeout; i++) {
             try {
                 element.click();
-                return;
+                break;
             } catch (WebDriverException e) {
                 waitFor(1);
             }

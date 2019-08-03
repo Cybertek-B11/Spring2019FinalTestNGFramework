@@ -82,7 +82,7 @@ public abstract class BasePage {
             logger.error("Failed to click on :: "+module);
             logger.error(e);
             BrowserUtils.waitForStaleElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
-            Driver.getDriver().findElement(By.xpath(moduleLocator)).click();
+            BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath(moduleLocator)),  Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         }
     }
 

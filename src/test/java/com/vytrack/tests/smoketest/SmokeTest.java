@@ -1,4 +1,5 @@
 package com.vytrack.tests.smoketest;
+
 import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.TestBase;
@@ -8,7 +9,7 @@ import org.testng.annotations.Test;
 public class SmokeTest extends TestBase {
 
     @Test
-    public void verifyDashboards(){
+    public void verifyDashboards() {
         extentLogger = report.createTest("Verify Dashboards module");
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
@@ -22,7 +23,7 @@ public class SmokeTest extends TestBase {
     }
 
     @Test
-    public void verifyFleet(){
+    public void verifyFleet() {
         extentLogger = report.createTest("Verify Fleet module");
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
@@ -41,7 +42,7 @@ public class SmokeTest extends TestBase {
     }
 
     @Test
-    public void verifySales(){
+    public void verifySales() {
         extentLogger = report.createTest("Verify Sales module");
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
@@ -54,7 +55,7 @@ public class SmokeTest extends TestBase {
     }
 
     @Test
-    public void verifySystem(){
+    public void verifySystem() {
         extentLogger = report.createTest("Verify System module");
         pages.loginPage().login(); // login with default credentials
         pages.loginPage().navigateToModule("System", "Jobs");
@@ -62,7 +63,7 @@ public class SmokeTest extends TestBase {
     }
 
     @Test
-    public void verifyMarketing(){
+    public void verifyMarketing() {
         extentLogger = report.createTest("Verify Marketing module");
         pages.loginPage().login(); // login with default credentials
         pages.loginPage().navigateToModule("Marketing", "Campaigns");
@@ -70,7 +71,7 @@ public class SmokeTest extends TestBase {
     }
 
     @Test
-    public void verifyCustomers(){
+    public void verifyCustomers() {
         extentLogger = report.createTest("Verify Customers module");
         pages.loginPage().login(); // login with default credentials
         pages.loginPage().navigateToModule("Customers", "Accounts");
