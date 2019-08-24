@@ -1,4 +1,5 @@
 package com.vytrack.utilities;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
@@ -33,7 +34,7 @@ public class ExcelUtil {
 
     // we create an object ExcelUtil class to work with specific excel file
     //in this case, file path will be retrieved from properties file
-    public ExcelUtil(String sheetName){
+    public ExcelUtil(String sheetName) {
         //we are getting path to the excel file from properties file
         this.path = ConfigurationReader.getProperty("users_test_data");
         try {
@@ -60,10 +61,13 @@ public class ExcelUtil {
             String cellData = cell.toString();
             return cellData;
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
 
+    //this method will return data table as 2d array
+    //so we need this format because of data provider.
     public String[][] getDataArray() {
 
         String[][] data = new String[rowCount()][columnCount()];
