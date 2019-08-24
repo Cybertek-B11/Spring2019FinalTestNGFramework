@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public abstract class BasePage {
     //we don't want to access these variables outside
@@ -21,6 +22,12 @@ public abstract class BasePage {
 
     @FindBy(css = "h1[class='oro-subtitle']")
     protected WebElement pageSubTitle;
+
+    @FindBy(css = "#user-menu > a")
+    protected WebElement usersFullName;
+
+    @FindBy(linkText = "Logout")
+    protected WebElement logout;
 
 
     public BasePage() {
@@ -85,6 +92,18 @@ public abstract class BasePage {
             BrowserUtils.waitForStaleElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
             BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath(moduleLocator)),  Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         }
+    }
+
+    public String getUsersFullName(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForVisibility(usersFullName, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+        return usersFullName.getText();
+    }
+
+    public void logout(){
+        BrowserUtils.waitForStaleElement(usersFullName);
+        usersFullName.click();
+        logout.click();
     }
 
 }
