@@ -15,6 +15,7 @@ public class DDTLoginTests extends TestBase {
     @Test(dataProvider = "credentials_info")
     public void loginTestWithDataProvider(String execute, String username, String password, String firstname, String lastname, String result){
         Pages page = new Pages();
+        extentLogger = report.createTest("Data Driver Testing with excel");
         if(execute.equalsIgnoreCase("y")){
             page.loginPage().login(username, password);
             String actualFullName = page.dashboardPage().getUsersFullName();
@@ -28,7 +29,7 @@ public class DDTLoginTests extends TestBase {
 
     @DataProvider(name="credentials_info")
     public Object[][] credentials(){
-        ExcelUtil qa2 = new ExcelUtil("src/test/resources/Vytrack_testusers.xlsx", "QA1-short");
+        ExcelUtil qa2 = new ExcelUtil("src/test/resources/Vytrack_testusers.xlsx", "QA2-short");
         return qa2.getDataArray();
     }
 }
