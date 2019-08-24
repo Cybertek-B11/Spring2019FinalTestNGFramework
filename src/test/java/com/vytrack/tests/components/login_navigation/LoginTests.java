@@ -1,5 +1,6 @@
 package com.vytrack.tests.components.login_navigation;
 
+import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.TestBase;
 import org.testng.Assert;
@@ -17,6 +18,9 @@ public class LoginTests extends TestBase {
         //because for second test, if we run all tests in a row, driver will have null session
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
+
+        LoginPage loginPage =  pages.loginPage();
+
         pages.loginPage().clickRememberMe();
         pages.loginPage().login(username, password);
         //to verify that Dashboard page opened
