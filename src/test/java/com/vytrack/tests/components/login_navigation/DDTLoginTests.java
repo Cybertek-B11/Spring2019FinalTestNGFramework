@@ -22,6 +22,7 @@ public class DDTLoginTests extends TestBase {
             String expectedFullName = firstname+" "+lastname;
             Assert.assertEquals(actualFullName, expectedFullName, "Name doesn't match");
             page.dashboardPage().logout();
+            extentLogger.pass("Login as "+username+" successful");
         }else{
             throw new SkipException("Test ignored");
         }
@@ -29,7 +30,7 @@ public class DDTLoginTests extends TestBase {
 
     @DataProvider(name="credentials_info")
     public Object[][] credentials(){
-        ExcelUtil qa2 = new ExcelUtil("src/test/resources/Vytrack_testusers.xlsx", "QA2-short");
+        ExcelUtil qa2 = new ExcelUtil("src/test/resuorces/Vytrack testusers.xlsx", "QA2-short");
         return qa2.getDataArray();
     }
 }
