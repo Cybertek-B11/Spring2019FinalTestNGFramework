@@ -30,7 +30,7 @@ public class DDTLoginTests extends TestBase {
 
     @DataProvider(name="credentials_info")
     public Object[][] credentials(){
-        ExcelUtil qa2 = new ExcelUtil("src/test/resuorces/Vytrack testusers.xlsx", "QA2-short");
+        ExcelUtil qa2 = new ExcelUtil("src/test/resources/Vytrack testusers.xlsx", "QA2-short");
         return qa2.getDataArray();
     }
 }
