@@ -1,4 +1,7 @@
-package com.vytrack.utilities;
+package com.vytrack.base;
+import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,6 +25,15 @@ public abstract class BasePage {
     @FindBy(css = "h1[class='oro-subtitle']")
     protected WebElement pageSubTitle;
 
+    @FindBy(css = "#user-menu > a")
+    protected WebElement userName;
+
+
+    @FindBy(linkText = "Logout")
+    public WebElement logOutLink;
+
+    @FindBy(linkText = "My User")
+    public WebElement myUser;
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -85,6 +97,26 @@ public abstract class BasePage {
             BrowserUtils.waitForStaleElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
             BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath(moduleLocator)),  Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         }
+    }
+
+    public String getUserName(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForVisibility(userName, 5);
+        return userName.getText();
+    }
+
+
+
+    public void logOut(){
+        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithJS(userName);
+        BrowserUtils.clickWithJS(logOutLink);
+    }
+    public void goToMyUser(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForClickablility(userName, 5).click();
+        BrowserUtils.waitForClickablility(myUser, 5).click();
+
     }
 
 }

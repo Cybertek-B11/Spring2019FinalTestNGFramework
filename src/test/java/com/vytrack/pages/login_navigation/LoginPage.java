@@ -12,11 +12,9 @@ public class LoginPage {
     public LoginPage(){PageFactory.initElements(Driver.getDriver(), this);}
 
     @FindBy(id = "prependedInput")
-    @CacheLookup
     public WebElement userNameElement;
 
     @FindBy(name = "_password")
-    @CacheLookup
     public WebElement passwordElement;
 
     @FindBy(id="_submit")

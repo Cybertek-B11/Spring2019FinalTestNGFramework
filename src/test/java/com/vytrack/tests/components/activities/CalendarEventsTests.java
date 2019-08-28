@@ -2,7 +2,7 @@ package com.vytrack.tests.components.activities;
 
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
-import com.vytrack.utilities.TestBase;
+import com.vytrack.base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

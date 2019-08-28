@@ -1,8 +1,6 @@
 package com.vytrack.pages.activites;
 
-import com.vytrack.utilities.BasePage;
-import com.vytrack.utilities.Driver;
-import org.openqa.selenium.support.PageFactory;
+import com.vytrack.base.BasePage;
 
 public class CallsPage extends BasePage {
 
