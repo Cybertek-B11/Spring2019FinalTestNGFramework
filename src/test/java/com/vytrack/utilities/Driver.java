@@ -32,7 +32,6 @@ public class Driver {
         if(browsers.length>0||browsers[0]!=null){
             browser = browsers[0];
         }
-
         switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
@@ -74,18 +73,18 @@ public class Driver {
         driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
 
-    public static  WebDriver getDriver() {
+    public static WebDriver getDriver() {
         //Get driver from ThreadLocalMap
         return driver.get();
     }
 
 
     //kill all drivers
-    public static  void closeDriver() {
+    public static void closeDriver() {
         driver.get().quit();
     }
 
-    public static  void shutDownDrivers() {
+    public static void shutDownDrivers() {
         driver.remove();
     }
 }
