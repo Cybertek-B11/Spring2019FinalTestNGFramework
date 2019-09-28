@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class TestBase {
 
     //should be public/protected !!!!
-    protected WebDriver driver;
+    protected static WebDriver driver;
     protected Pages pages;
     protected SoftAssert softAssert;
     protected static ExtentReports report;
@@ -59,13 +59,15 @@ public abstract class TestBase {
         if (System.getenv("runner") != null) {
             extentLogger.info("Running: " + System.getenv("runner"));
         }
+        logger.info("Thread id :: "+Thread.currentThread().getId());
     }
 
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     public void setup(@Optional String browser) {
-        driver = Driver.getDriver(browser);
+        Driver.intiDriver(browser);
+        driver = Driver.getDriver();
         pages = new Pages();
         softAssert = new SoftAssert();
         driver.manage().timeouts().implicitlyWait(Long.valueOf(ConfigurationReader.getProperty("implicitwait")), TimeUnit.SECONDS);
