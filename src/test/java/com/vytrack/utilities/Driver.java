@@ -15,19 +15,20 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
-@SuppressWarnings("varargs")
 public class Driver {
 
-    private static volatile ThreadLocal<WebDriver> driver = new ThreadLocal<>();;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static String browser = ConfigurationReader.getProperty("browser");
     private static final int IMPLICIT_WAIT = Integer.valueOf(ConfigurationReader.getProperty("LONG_WAIT"));
     private static final Logger logger = LogManager.getLogger(Driver.class);
+
     private Driver(){
 
     }
 
-    public static void intiDriver(String... browsers) {
+    public synchronized static void intiDriver(String... browsers) {
         if(browsers.length>0||browsers[0]!=null){
             browser = browsers[0];
         }
@@ -67,9 +68,10 @@ public class Driver {
                 driver.set(new SafariDriver());
                 break;
             default:
+                logger.error("Illegal browser type :: "+browser);
                 throw new RuntimeException("Illegal browser type!");
-
         }
+        driver.get().manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
 
     public static  WebDriver getDriver() {
