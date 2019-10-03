@@ -14,6 +14,11 @@ public abstract class BasePage {
     //we don't want to access these variables outside
     private static final Logger logger = LogManager.getLogger();
 
+    @FindBy(css = "#user-menu>a")
+    public WebElement userFullName;
+
+    @FindBy(linkText = "Logout")
+    public WebElement logOutLink;
 
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
@@ -85,6 +90,12 @@ public abstract class BasePage {
             BrowserUtils.waitForStaleElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
             BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath(moduleLocator)),  Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
         }
+    }
+
+    public void logOut(){
+        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithJS(userFullName);
+        BrowserUtils.clickWithJS(logOutLink);
     }
 
 }

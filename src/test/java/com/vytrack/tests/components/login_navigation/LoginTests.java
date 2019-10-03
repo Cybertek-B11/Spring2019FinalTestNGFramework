@@ -1,6 +1,9 @@
 package com.vytrack.tests.components.login_navigation;
 
+import com.vytrack.pages.dashboards.DashboardPage;
+import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.ExcelUtil;
 import com.vytrack.utilities.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -79,6 +82,27 @@ public class LoginTests extends TestBase {
         pages.loginPage().login("wrongusername", "wrongpassword");
         softAssert.assertEquals(pages.loginPage().getErrorMessage(), "Invalid user name or password.");
         extentLogger.pass("Verified that Message present: " + pages.loginPage().getErrorMessage());
+    }
+
+
+
+    @Test(dataProvider = "credentials_list") // get data from data provider
+    public void loginWithDataProvider(String execute, String username, String password, String firstname, String lastname, String result) {
+        extentLogger = report.createTest("DDT test" + username);
+        if (execute.equals("y")) {
+            new LoginPage().login(username, password);
+            DashboardPage dashboardPage = new DashboardPage();
+            String actualFullName = dashboardPage.userFullName.getText();
+            String expectedFullName = firstname+lastname;
+            Assert.assertEquals(actualFullName, expectedFullName);
+            dashboardPage.logOut();
+        }
+    }
+
+    @DataProvider(name = "credentials_list")
+    public static Object[][] credentials1 () {
+        ExcelUtil qa3 = new ExcelUtil("src/test/resources/Vytrack testusers.xlsx", "QA3-short");
+        return qa3.getDataArray();
     }
 
 
