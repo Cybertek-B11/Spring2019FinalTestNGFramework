@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="WebOrders Automation Smoke Tests" verbose="3" parallel="tests" thread-count="3">
+
+    <test name="Activities test">
+        <parameter name="browser" value="chrome"></parameter>
+        <packages>
+            <package name="com.vytrack.tests.components.activities"></package>
+        </packages>
+    </test>
+
+    <test name="Login tests">
+        <parameter name="browser" value="chrome"></parameter>
+        <packages>
+            <package name="com.vytrack.tests.components.login_navigation"></package>
+        </packages>
+    </test>
+
+    <test name="Smoke tests">
+        <parameter name="browser" value="chrome"></parameter>
+        <packages>
+            <package name="com.vytrack.tests.smoketest"></package>
+        </packages>
+    </test>
+</suite>

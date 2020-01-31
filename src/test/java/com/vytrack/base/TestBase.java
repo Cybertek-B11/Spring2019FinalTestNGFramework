@@ -1,4 +1,4 @@
-package com.vytrack.utilities;
+package com.vytrack.base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -6,6 +6,10 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.Driver;
+import com.vytrack.utilities.Pages;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -18,10 +22,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public abstract class TestBase {
 
     //should be public/protected !!!!
-    protected WebDriver driver;
+    protected static WebDriver driver;
     protected Pages pages;
     protected SoftAssert softAssert;
     protected static ExtentReports report;
@@ -55,13 +59,15 @@ public class TestBase {
         if (System.getenv("runner") != null) {
             extentLogger.info("Running: " + System.getenv("runner"));
         }
+        logger.info("Thread id :: "+Thread.currentThread().getId());
     }
 
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     public void setup(@Optional String browser) {
-        driver = Driver.getDriver(browser);
+        Driver.intiDriver(browser);
+        driver = Driver.getDriver();
         pages = new Pages();
         softAssert = new SoftAssert();
         driver.manage().timeouts().implicitlyWait(Long.valueOf(ConfigurationReader.getProperty("implicitwait")), TimeUnit.SECONDS);

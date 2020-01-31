@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="WebOrders Automation Smoke Tests" verbose="2" parallel="classes" thread-count="2">
+<suite name="WebOrders Automation Smoke Tests" verbose="2" parallel="tests" thread-count="2">
     <test name="Login tests using Firefox">
         <parameter name="browser" value="chrome"></parameter>
         <packages>
