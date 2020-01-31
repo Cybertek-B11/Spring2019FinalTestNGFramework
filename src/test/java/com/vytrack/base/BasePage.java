@@ -32,22 +32,18 @@ public abstract class BasePage {
     protected WebElement pageSubTitle;
 
     @FindBy(css = "#user-menu > a")
-<<<<<<< HEAD:src/test/java/com/vytrack/base/BasePage.java
     protected WebElement userName;
 
 
-    @FindBy(linkText = "Logout")
-    public WebElement logOutLink;
-
     @FindBy(linkText = "My User")
     public WebElement myUser;
-=======
+
     protected WebElement usersFullName;
 
     @FindBy(linkText = "Logout")
     protected WebElement logout;
 
->>>>>>> 7d77d446a5fc4d82a75127a249269eec595956dc:src/test/java/com/vytrack/utilities/BasePage.java
+
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -113,14 +109,13 @@ public abstract class BasePage {
         }
     }
 
-<<<<<<< HEAD:src/test/java/com/vytrack/base/BasePage.java
-<<<<<<< HEAD:src/test/java/com/vytrack/utilities/BasePage.java
+
     public void logOut(){
         BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(userFullName);
         BrowserUtils.clickWithJS(logOutLink);
     }
-=======
+
     public String getUserName(){
         waitUntilLoaderScreenDisappear();
         BrowserUtils.waitForVisibility(userName, 5);
@@ -129,19 +124,18 @@ public abstract class BasePage {
 
 
 
-    public void logOut(){
-        BrowserUtils.waitFor(2);
-        BrowserUtils.clickWithJS(userName);
-        BrowserUtils.clickWithJS(logOutLink);
-    }
+   // public void logOut(){
+  //      BrowserUtils.waitFor(2);
+  //      BrowserUtils.clickWithJS(userName);
+ //       BrowserUtils.clickWithJS(logOutLink);
+//    }
     public void goToMyUser(){
         waitUntilLoaderScreenDisappear();
         BrowserUtils.waitForClickablility(userName, 5).click();
         BrowserUtils.waitForClickablility(myUser, 5).click();
 
     }
->>>>>>> cc973126fa13c3aec4d466b5e1b6a8e62ea57918:src/test/java/com/vytrack/base/BasePage.java
-=======
+
     public String getUsersFullName(){
         waitUntilLoaderScreenDisappear();
         BrowserUtils.waitForVisibility(usersFullName, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
@@ -153,6 +147,5 @@ public abstract class BasePage {
         usersFullName.click();
         logout.click();
     }
->>>>>>> 7d77d446a5fc4d82a75127a249269eec595956dc:src/test/java/com/vytrack/utilities/BasePage.java
 
 }

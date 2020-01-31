@@ -1,17 +1,15 @@
 package com.vytrack.tests.components.login_navigation;
 
-<<<<<<< HEAD
+
 import com.vytrack.pages.dashboards.DashboardPage;
-=======
->>>>>>> 7d77d446a5fc4d82a75127a249269eec595956dc
+
 import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.ExcelUtil;
-<<<<<<< HEAD
+
 import com.vytrack.utilities.TestBase;
-=======
+
 import com.vytrack.base.TestBase;
->>>>>>> cc973126fa13c3aec4d466b5e1b6a8e62ea57918
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
@@ -100,8 +98,6 @@ public class LoginTests extends TestBase {
     }
 
 
-<<<<<<< HEAD
-
     @Test(dataProvider = "credentials_list") // get data from data provider
     public void loginWithDataProvider(String execute, String username, String password, String firstname, String lastname, String result) {
         extentLogger = report.createTest("DDT test" + username);
@@ -121,7 +117,7 @@ public class LoginTests extends TestBase {
         return qa3.getDataArray();
     }
 
-=======
+
 //    @Test(dataProvider = "credentials_info2") // get data from data provider
 //    public void loginWithDataProvider(String execute, String username, String password, String firstname, String lastname, String result) {
 //        extentLogger = report.createTest("DDT test" + username);
@@ -176,6 +172,5 @@ public class LoginTests extends TestBase {
 //        System.out.println( Arrays.deepToString(qa3.getDataArray()));
 //        return qa3.getDataArray();
 //    }
->>>>>>> cc973126fa13c3aec4d466b5e1b6a8e62ea57918
 
 }
