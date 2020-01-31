@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public abstract class BasePage {
     //we don't want to access these variables outside
@@ -31,6 +32,7 @@ public abstract class BasePage {
     protected WebElement pageSubTitle;
 
     @FindBy(css = "#user-menu > a")
+<<<<<<< HEAD:src/test/java/com/vytrack/base/BasePage.java
     protected WebElement userName;
 
 
@@ -39,6 +41,13 @@ public abstract class BasePage {
 
     @FindBy(linkText = "My User")
     public WebElement myUser;
+=======
+    protected WebElement usersFullName;
+
+    @FindBy(linkText = "Logout")
+    protected WebElement logout;
+
+>>>>>>> 7d77d446a5fc4d82a75127a249269eec595956dc:src/test/java/com/vytrack/utilities/BasePage.java
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -104,6 +113,7 @@ public abstract class BasePage {
         }
     }
 
+<<<<<<< HEAD:src/test/java/com/vytrack/base/BasePage.java
 <<<<<<< HEAD:src/test/java/com/vytrack/utilities/BasePage.java
     public void logOut(){
         BrowserUtils.waitFor(2);
@@ -131,5 +141,18 @@ public abstract class BasePage {
 
     }
 >>>>>>> cc973126fa13c3aec4d466b5e1b6a8e62ea57918:src/test/java/com/vytrack/base/BasePage.java
+=======
+    public String getUsersFullName(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForVisibility(usersFullName, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+        return usersFullName.getText();
+    }
+
+    public void logout(){
+        BrowserUtils.waitForStaleElement(usersFullName);
+        usersFullName.click();
+        logout.click();
+    }
+>>>>>>> 7d77d446a5fc4d82a75127a249269eec595956dc:src/test/java/com/vytrack/utilities/BasePage.java
 
 }
