@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf45843f-0aa9-4e46-b294-ab9aec62090e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spring2019TestNGFrameworkFinal.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configuration.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/multi_browser_parallel_testing.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/multi_browser_testing.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/regression.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runner_with_data_provider.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runner_with_parameters.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/_verifyDateTest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/_verifyTimeTest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/_verifyTimeTest2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/_verifyTodaysDateTest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smoke_test_using_groups.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/smoketest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/pages/activites/CalendarEventsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/pages/activites/CallsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/pages/dashboards/DashboardPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/pages/dashboards/ManageDashboards.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/pages/login_navigation/LoginPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/tests/components/activities/CalendarEventsTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/tests/components/login_navigation/LoginTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/tests/components/review_sessions_code/WebTableComparisonTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/tests/smoketest/SmokeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/BasePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/BrowserUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/ConfigurationReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/Driver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/ExcelUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/Pages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/vytrack/utilities/TestBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/Countries.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/EmployeesTestData.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/Vytrack testusers.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/~$Countries.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testngrunner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testngrunner2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Source1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bf45843f-0aa9-4e46-b294-ab9aec62090e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +14,7 @@
   <component name="ProjectId" id="1X9O1X2OPB6WEfoKKgxGyqQ68j5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunDashboard">
