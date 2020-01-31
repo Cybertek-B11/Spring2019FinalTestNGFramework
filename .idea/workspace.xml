@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf45843f-0aa9-4e46-b294-ab9aec62090e" name="Default Changelist" comment="" />
+    <list default="true" id="bf45843f-0aa9-4e46-b294-ab9aec62090e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring2019TestNGFrameworkFinal.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/configuration.properties" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +34,88 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="TestNG.CalendarEventsTests.verifyDateTest">
+    <configuration name="CalendarEventsTests.verifyDateTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Spring2019TestNGFrameworkFinal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vytrack.tests.components.activities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vytrack.tests.components.activities" />
+      <option name="MAIN_CLASS_NAME" value="com.vytrack.tests.components.activities.CalendarEventsTests" />
+      <option name="METHOD_NAME" value="verifyDateTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalendarEventsTests.verifyTitleColumn" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Spring2019TestNGFrameworkFinal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vytrack.tests.components.activities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vytrack.tests.components.activities" />
+      <option name="MAIN_CLASS_NAME" value="com.vytrack.tests.components.activities.CalendarEventsTests" />
+      <option name="METHOD_NAME" value="verifyTitleColumn" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SmokeTest.verifyDashboards" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Spring2019TestNGFrameworkFinal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vytrack.tests.smoketest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vytrack.tests.smoketest" />
+      <option name="MAIN_CLASS_NAME" value="com.vytrack.tests.smoketest.SmokeTest" />
+      <option name="METHOD_NAME" value="verifyDashboards" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SmokeTest.verifyMarketing" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Spring2019TestNGFrameworkFinal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vytrack.tests.smoketest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vytrack.tests.smoketest" />
+      <option name="MAIN_CLASS_NAME" value="com.vytrack.tests.smoketest.SmokeTest" />
+      <option name="METHOD_NAME" value="verifyMarketing" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.CalendarEventsTests.verifyDateTest" />
+        <item itemvalue="TestNG.CalendarEventsTests.verifyTitleColumn" />
+        <item itemvalue="TestNG.SmokeTest.verifyDashboards" />
+        <item itemvalue="TestNG.SmokeTest.verifyMarketing" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -47,7 +134,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
