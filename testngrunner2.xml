@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Calendar events tests">
+    <test name="Calendar Events Tests">
+        <classes>
+            <class name="com.vytrack.tests.components.activities.CalendarEventsTests"/>
+        </classes>
+    </test>
+
+</suite>

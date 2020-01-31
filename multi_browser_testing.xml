@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Multi browsing tests" verbose="2">
+
+    <test name="Login tests using Firefox">
+
+        <parameter name="browser" value="firefox"></parameter>
+        <packages>
+            <package name="com.vytrack.tests.components.login_navigation"></package>
+        </packages>
+    </test>
+
+    <test name="Login tests using Chrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <packages>
+            <package name="com.vytrack.tests.components.login_navigation"></package>
+        </packages>
+    </test>
+
+</suite>
