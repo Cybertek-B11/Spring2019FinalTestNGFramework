@@ -1,4 +1,7 @@
-package com.vytrack.utilities;
+package com.vytrack.base;
+import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public abstract class BasePage {
     //we don't want to access these variables outside
@@ -26,6 +30,19 @@ public abstract class BasePage {
 
     @FindBy(css = "h1[class='oro-subtitle']")
     protected WebElement pageSubTitle;
+
+    @FindBy(css = "#user-menu > a")
+    protected WebElement userName;
+
+
+    @FindBy(linkText = "My User")
+    public WebElement myUser;
+
+    protected WebElement usersFullName;
+
+    @FindBy(linkText = "Logout")
+    protected WebElement logout;
+
 
 
     public BasePage() {
@@ -92,10 +109,43 @@ public abstract class BasePage {
         }
     }
 
+
     public void logOut(){
         BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(userFullName);
         BrowserUtils.clickWithJS(logOutLink);
+    }
+
+    public String getUserName(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForVisibility(userName, 5);
+        return userName.getText();
+    }
+
+
+
+   // public void logOut(){
+  //      BrowserUtils.waitFor(2);
+  //      BrowserUtils.clickWithJS(userName);
+ //       BrowserUtils.clickWithJS(logOutLink);
+//    }
+    public void goToMyUser(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForClickablility(userName, 5).click();
+        BrowserUtils.waitForClickablility(myUser, 5).click();
+
+    }
+
+    public String getUsersFullName(){
+        waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForVisibility(usersFullName, Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
+        return usersFullName.getText();
+    }
+
+    public void logout(){
+        BrowserUtils.waitForStaleElement(usersFullName);
+        usersFullName.click();
+        logout.click();
     }
 
 }

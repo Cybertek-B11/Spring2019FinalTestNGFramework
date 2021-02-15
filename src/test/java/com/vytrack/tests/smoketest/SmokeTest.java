@@ -1,7 +1,7 @@
 package com.vytrack.tests.smoketest;
 
 import com.vytrack.utilities.ConfigurationReader;
-import com.vytrack.utilities.TestBase;
+import com.vytrack.base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -1,14 +1,24 @@
 package com.vytrack.tests.components.login_navigation;
 
+
 import com.vytrack.pages.dashboards.DashboardPage;
+
 import com.vytrack.pages.login_navigation.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.ExcelUtil;
+
 import com.vytrack.utilities.TestBase;
+
+import com.vytrack.base.TestBase;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class LoginTests extends TestBase {
 
@@ -20,6 +30,9 @@ public class LoginTests extends TestBase {
         //because for second test, if we run all tests in a row, driver will have null session
         String username = ConfigurationReader.getProperty("storemanagerusername");
         String password = ConfigurationReader.getProperty("storemanagerpassword");
+
+        LoginPage loginPage =  pages.loginPage();
+
         pages.loginPage().clickRememberMe();
         pages.loginPage().login(username, password);
         //to verify that Dashboard page opened
@@ -38,8 +51,8 @@ public class LoginTests extends TestBase {
     }
 
 
-    @Test
-    @Parameters({ "username", "password" }) // get data from data testng.xml
+    @Test(dataProvider = "credentials_info")
+//    @Parameters({ "username", "password" }) // get data from data testng.xml
     public void loginWithParameters(String username, String password) {
         extentLogger = report.createTest("Login as store manager");
 
@@ -85,7 +98,6 @@ public class LoginTests extends TestBase {
     }
 
 
-
     @Test(dataProvider = "credentials_list") // get data from data provider
     public void loginWithDataProvider(String execute, String username, String password, String firstname, String lastname, String result) {
         extentLogger = report.createTest("DDT test" + username);
@@ -105,5 +117,60 @@ public class LoginTests extends TestBase {
         return qa3.getDataArray();
     }
 
+
+//    @Test(dataProvider = "credentials_info2") // get data from data provider
+//    public void loginWithDataProvider(String execute, String username, String password, String firstname, String lastname, String result) {
+//        extentLogger = report.createTest("DDT test" + username);
+//        if (execute.equals("y")) {
+//            pages.loginPage().login(username, password);
+//            String actualFullName = pages.dashboardPage().getUserName();
+//            String expectedFullName = firstname+" "+lastname;
+//            pages.dashboardPage().waitUntilLoaderScreenDisappear();
+//            Assert.assertEquals(actualFullName, expectedFullName);
+//            pages.dashboardPage().logOut();
+//        }else{
+//            throw new SkipException("Test ignored");
+//        }
+//    }
+//
+//    @Test
+//    public void test() {
+//        extentLogger = report.createTest("DDT test");
+//        ExcelUtil qa3 = new ExcelUtil("src/test/resources/Vytrack testusers.xlsx", "QA3-short");
+//        System.out.println(qa3.rowCount());
+//        System.out.println(qa3.columnCount());
+//        System.out.println(qa3.getColumnsNames());
+//
+//        List<Map<String, String>> allRows = qa3.getDataList();
+//        System.out.println(allRows);
+//
+//        for (int i = 0; i < allRows.size(); i++) {
+//            Map<String, String> user = allRows.get(i);
+//            if (user.get("execute").equals("y")) {
+//                String username = user.get("username");
+//                String password = user.get("password");
+//               pages.loginPage().login(username, password);
+//
+//                String actualFullName = pages.dashboardPage().getUserName();
+//                String expectedFullName = user.get("firstname") + " " + user.get("lastname");
+//                if (actualFullName.equals(expectedFullName)) {
+//                    qa3.setCellData("pass", "result", i + 1);
+//                } else {
+//                    qa3.setCellData("fail", "result", i + 1);
+//                }
+//
+//                pages.dashboardPage().logOut();
+//            } else {
+//                qa3.setCellData("skipped", "result", i + 1);
+//            }
+//        }
+//    }
+//
+//    @DataProvider(name = "credentials_info2")
+//    public static Object[][] credentials2() {
+//        ExcelUtil qa3 = new ExcelUtil("src/test/resources/Vytrack testusers.xlsx", "QA3-short");
+//        System.out.println( Arrays.deepToString(qa3.getDataArray()));
+//        return qa3.getDataArray();
+//    }
 
 }
